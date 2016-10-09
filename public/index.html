@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mapkin</title>
+  </head>
+  <body>
+    <h1>Ok?</h1>
+    <input type="text" name="name" placeholder="Username" id="user-in">
+    <button type="button" name="button" onclick="sendResp()">Send Worker msg</button>
+    <div id="resp">
+
+    </div>
+    <script src="/libs/socket.io.js"></script>
+    <script type="text/javascript">
+      /*var socket = io('/');
+      socket.on('net-event', function(data) {
+        console.log('Server sent a net event with status ' + data.status);
+        socket.emit('msg', {msg: "Wadapp?"})
+      })
+
+      socket.on('msg', function(data) {
+        console.log('Server sent a message!');
+      })*/
+
+      // Install Service Worker
+      var respEl = document.getElementById('resp');
+      //var typeIn = document.getElementById('type-in');
+      var userIn  = document.getElementById('user-in');
+      var worker;
+      var isSafari = typeof openDatabase !== 'undefined'
+                    && /(Safari|iPhone|iPad|iPod)/.test(navigator.userAgent)
+                    && !/Chrome/.test(navigator.userAgent)
+                    && !/BlackBerry/.test(navigator.platform);
+      if (true) {
+        console.log('Init normal worker')
+        worker = new Worker('/js/worker/main.js');
+      } else {
+        console.log('Init Pseudo worker')
+
+        worker = new PseudoWorker('/js/worker/main.js');
+      }
+
+      if(worker) {
+        console.log('Service Worker initialized!')
+        worker.addEventListener('error', function(error) {
+          console.warn('Worker threw an error: ', error.error);
+        });
+
+
+        worker.postMessage({
+          type: 'origin',
+          val: window.location.origin,
+          msg: 'fafs'
+        });
+
+        worker.addEventListener('message', function(e) {
+          var message = e.data;
+          //respEl.innerHTML = "Type: " + message.type + " - Message: " + message.msg;
+          if(message.type === 'logged') {
+            respEl.innerHTML = message.msg;
+          }
+        });
+      } else {
+        console.log('Worker couldnt be init()');
+      }
+
+      function sendResp() {
+        respEl.innerHTML = '';
+        if(worker) {
+          worker.postMessage({
+            type: 'login',
+            user: userIn.value
+          })
+        }
+      }
+
+
+    </script>
+  </body>
+</html>

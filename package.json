@@ -1,0 +1,26 @@
+{
+  "name": "mapkin",
+  "version": "0.0.1",
+  "description": "An app to share points in small maps",
+  "private": true,
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "JJOL",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "date-now": "^1.0.1",
+    "debounce": "^1.0.0",
+    "es6-promise": "^4.0.3",
+    "express": "^4.14.0",
+    "socket.io": "^1.4.8",
+    "socket.io-client": "^1.4.8"
+  },
+  "devDependencies": {
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.16.0"
+  }
+}

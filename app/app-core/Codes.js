@@ -1,0 +1,5 @@
+module.exports = {
+  USER_NOT_WHITELISTED: 2,
+  USER_NOT_LOGGED: 3,
+  NOT_EXISTANT_MAP: 4
+};

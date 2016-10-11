@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mapkin Sketches</title>
+    <style media="screen">
+      html, body {
+        padding: 0;
+        margin: 0;
+      }
+      header {
+        height: 8vh;
+        background: darkblue;
+      }
+      #views-container {
+        height: 92vh;
+        position: relative;
+      }
+      .view {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        height: 100%;
+        left: 0;
+        width: 100%;
+      }
+      .view-container {
+        width: 100%;
+        height: 100%;
+      }
+      .view.viewed {
+        opacity: 1;
+      }
+      .side-menu {
+        position: absolute;
+        width: 84.9%;
+        height: 100%;
+        background: blue;
+        opacity: 0;
+        pointer-events: none;
+      }
+      .main-container {
+        width: 100%;
+        height: 100%;
+        background: grey;
+      }
+
+      @media screen and (min-width: 1124px) {
+        .view-container {
+          display: flex;
+          justify-content: flex-start;
+        }
+        .side-menu {
+          position: static;
+          width: 24.9%;
+          opacity: 1;
+          pointer-events: all;
+        }
+        .main-container {
+          width: 74.9%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav>
+          <button type="button" name="button">Back</button>
+          <button type="button" name="button">Toggle</button>
+          <div class="input-container">
+            <input type="text" name="bar_input" placeholder="Search For Maps">
+          </div>
+        </nav>
+      </header>
+      <div id="views-container">
+        <div id="default-view" class="view view-container viewed">
+            <div class="side-menu">
+
+            </div>
+            <div class="main-container">
+
+            </div>
+        </div>
+        <div id="map-view" class="view view-container">
+          <div class="side-menu">
+            <h3>Map Options</h3>
+          </div>
+          <div class="main-container">
+            <img src="" alt="" />
+          </div>
+        </div>
+
+        <div id="main-view" class="view view-container">
+          <div class="side-menu">
+            <h3>Menu</h3>
+            <ul>
+              <li>Activity</li>
+              <li>My Maps</li>
+              <li>My Friends</li>
+              <li>Config</li>
+            </ul>
+          </div>
+          <div class="main-container " >
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- <script type="text/javascript" src="/js/client/bundle.js"></script> -->
+  </body>
+</html>
